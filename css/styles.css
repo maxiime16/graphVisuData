@@ -1,0 +1,180 @@
+/* Corps du document */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    /* Blanc pour le thème irlandais */
+    color: #2c3e50;
+}
+
+/* Barre de navigation */
+.navbar {
+    background-color: #006400;
+    /* Vert foncé */
+    padding: 1em 0;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .container {
+    display: flex;
+    gap: 1.5em;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    /* Texte blanc */
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-link.active {
+    background-color: #ffa500;
+    /* Orange irlandais */
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    background-color: #32cd32;
+    /* Vert lime pour hover */
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+/* Sections */
+.section {
+    display: none;
+    padding: 2em;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 2em auto;
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section.visible {
+    display: block;
+}
+
+/* Titres */
+h1,
+h2 {
+    margin-bottom: 0.5em;
+    color: #006400;
+    /* Vert foncé */
+}
+
+/* Formulaires */
+.label-inline {
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 220px);
+    max-width: 400px;
+}
+
+button {
+    background-color: #ffa500;
+    /* Orange */
+    color: #ffffff;
+    border: none;
+    padding: 0.7em 1.2em;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #32cd32;
+    /* Vert lime */
+}
+
+/* Tableau */
+table {
+    border-collapse: collapse;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 800px;
+}
+
+th,
+td {
+    border: 1px solid #999;
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    background-color: #006400;
+    /* Vert foncé */
+    color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.pagination button {
+    margin-right: 5px;
+}
+
+/* Graphique */
+#myChart,
+#yearlyChart {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Carte */
+#map {
+    width: 90%;
+    height: 600px;
+    margin-top: 20px;
+    border: 1px solid #aaa;
+}
+
+/* Couleurs des graphiques */
+.chart-hommes {
+    background-color: rgba(10, 163, 48, 0.94);
+    /* Vert */
+}
+
+.chart-femmes {
+    background-color: rgba(255, 132, 0, 0.79);
+    /* Orange */
+}
+
+.chart-annees {
+    border-color: rgba(10, 163, 48, 0.94);
+    /* Vert */
+    background-color: rgba(10, 163, 48, 0.29);
+    /* Vert clair */
+}

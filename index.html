@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Décès - Recherche & Visualisation</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet pour la carte -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Fichier CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" id="showCharts" class="nav-link active">Graphiques</a>
+            <a href="#" id="showSearchMap" class="nav-link">Recherche & Carte</a>
+        </div>
+    </nav>
+
+    <div id="chartsSection" class="section visible">
+        <h2>Graphique : Évolution des décès par année</h2>
+        <canvas id="yearlyChart" width="900" height="450"></canvas>
+        <h2>Graphique : Décès par année</h2>
+        <label for="yearSelect" class="label-inline">Sélectionnez une année :</label>
+        <select id="yearSelect"></select>
+        <button id="fetchDataBtn">Charger</button>
+        <br><br>
+        <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+        <p id="loadingInfo"></p>
+        <canvas id="myChart" width="900" height="450"></canvas>
+    </div>
+
+    <div id="searchMapSection" class="section">
+        <h2>Recherche ciblée (nom, prénom, année, département)</h2>
+        <div>
+            <label for="searchNom" class="label-inline">Nom :</label>
+            <input type="text" id="searchNom" placeholder="Ex : DURAND">
+        </div>
+        <div>
+            <label for="searchPrenom" class="label-inline">Prénom :</label>
+            <input type="text" id="searchPrenom" placeholder="Ex : Marie">
+        </div>
+        <div>
+            <label for="searchAnnee" class="label-inline">Année de décès :</label>
+            <input type="number" id="searchAnnee" placeholder="Ex : 2005" min="1900" max="2025">
+        </div>
+        <div>
+            <label for="searchDep" class="label-inline">Code Département décès :</label>
+            <input type="text" id="searchDep" placeholder="Ex : 75">
+        </div>
+        <button id="searchBtn">Rechercher</button>
+        <h2>Carte de France : nombre de décès filtrés par département</h2>
+        <div id="map"></div>
+        <p id="foundCount" style="display: none; font-weight: bold;"></p>
+        <table id="resultsTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Âge décès</th>
+                    <th>Date naissance</th>
+                    <th>Date décès</th>
+                    <th>Ville décès</th>
+                    <th>Département décès</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="pagination" style="display:none;">
+            <button id="prevPageBtn">Précédent</button>
+            <span id="pageInfo"></span>
+            <button id="nextPageBtn">Suivant</button>
+        </div>
+
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/charts.js"></script>
+    <script src="js/searchAndMap.js"></script>
+    <script>
+        const showCharts = document.getElementById('showCharts');
+        const showSearchMap = document.getElementById('showSearchMap');
+        const chartsSection = document.getElementById('chartsSection');
+        const searchMapSection = document.getElementById('searchMapSection');
+
+        showCharts.addEventListener('click', () => {
+            chartsSection.classList.add('visible');
+            searchMapSection.classList.remove('visible');
+            showCharts.classList.add('active');
+            showSearchMap.classList.remove('active');
+        });
+
+        showSearchMap.addEventListener('click', () => {
+            searchMapSection.classList.add('visible');
+            chartsSection.classList.remove('visible');
+            showSearchMap.classList.add('active');
+            showCharts.classList.remove('active');
+
+            // Forcer Leaflet à recalculer la taille de la carte après un bref délai
+            setTimeout(() => {
+                map.invalidateSize();
+
+                // Recentrer et ajuster le zoom sur les départements de France
+                if (departementsLayer) {
+                    map.fitBounds(departementsLayer.getBounds());
+                }
+            }, 200);
+        });
+
+
+    </script>
+</body>
+
+</html>
