@@ -16,8 +16,8 @@ let currentSearchPage = 0; // Page courante (0-based)
 const PAGE_SIZE = 50; // 50 résultats par page
 
 searchBtn.addEventListener("click", async () => {
-  const nom = document.getElementById("searchNom").value.trim();
-  const prenom = document.getElementById("searchPrenom").value.trim();
+  const nom = document.getElementById("searchNom").value.trim().toUpperCase();
+  const prenom = document.getElementById("searchPrenom").value.trim().toUpperCase();
   const annee = document.getElementById("searchAnnee").value.trim();
   const dep = document.getElementById("searchDep").value.trim();
 

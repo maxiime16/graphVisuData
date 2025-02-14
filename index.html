@@ -24,9 +24,11 @@
         </div>
     </nav>
 
-    <div id="chartsSection" class="section visible">
+    <div id="chartsSection1" class="section visible">
         <h2>Graphique : Évolution des décès par année</h2>
         <canvas id="yearlyChart" width="900" height="450"></canvas>
+    </div>
+    <div id="chartsSection2" class="section visible">
         <h2>Graphique : Décès par année</h2>
         <label for="yearSelect" class="label-inline">Sélectionnez une année :</label>
         <select id="yearSelect"></select>
@@ -39,23 +41,28 @@
 
     <div id="searchMapSection" class="section">
         <h2>Recherche ciblée (nom, prénom, année, département)</h2>
-        <div>
-            <label for="searchNom" class="label-inline">Nom :</label>
-            <input type="text" id="searchNom" placeholder="Ex : DURAND">
+        <div class="search-form">
+            <div>
+                <label for="searchNom" class="label-inline">Nom :</label>
+                <input type="text" id="searchNom" placeholder="Ex : DURAND">
+            </div>
+            <div>
+                <label for="searchPrenom" class="label-inline">Prénom :</label>
+                <input type="text" id="searchPrenom" placeholder="Ex : Marie">
+            </div>
+            <div>
+                <label for="searchAnnee" class="label-inline">Année de décès :</label>
+                <input type="number" id="searchAnnee" placeholder="Ex : 2005" min="1900" max="2025">
+            </div>
+            <div>
+                <label for="searchDep" class="label-inline">Département décès :</label>
+                <input type="text" id="searchDep" placeholder="Ex : 75">
+            </div>
+            <div>
+                <label for="searchDep" class="label-inline"></label>
+                <button id="searchBtn">Rechercher</button>
+            </div>
         </div>
-        <div>
-            <label for="searchPrenom" class="label-inline">Prénom :</label>
-            <input type="text" id="searchPrenom" placeholder="Ex : Marie">
-        </div>
-        <div>
-            <label for="searchAnnee" class="label-inline">Année de décès :</label>
-            <input type="number" id="searchAnnee" placeholder="Ex : 2005" min="1900" max="2025">
-        </div>
-        <div>
-            <label for="searchDep" class="label-inline">Code Département décès :</label>
-            <input type="text" id="searchDep" placeholder="Ex : 75">
-        </div>
-        <button id="searchBtn">Rechercher</button>
         <h2>Carte de France : nombre de décès filtrés par département</h2>
         <div id="map"></div>
         <p id="foundCount" style="display: none; font-weight: bold;"></p>
@@ -89,11 +96,13 @@
     <script>
         const showCharts = document.getElementById('showCharts');
         const showSearchMap = document.getElementById('showSearchMap');
-        const chartsSection = document.getElementById('chartsSection');
+        const chartsSection1 = document.getElementById('chartsSection1');
+        const chartsSection2 = document.getElementById('chartsSection2');
         const searchMapSection = document.getElementById('searchMapSection');
 
         showCharts.addEventListener('click', () => {
-            chartsSection.classList.add('visible');
+            chartsSection1.classList.add('visible');
+            chartsSection2.classList.add('visible');
             searchMapSection.classList.remove('visible');
             showCharts.classList.add('active');
             showSearchMap.classList.remove('active');
@@ -101,7 +110,8 @@
 
         showSearchMap.addEventListener('click', () => {
             searchMapSection.classList.add('visible');
-            chartsSection.classList.remove('visible');
+            chartsSection1.classList.remove('visible');
+            chartsSection2.classList.remove('visible');
             showSearchMap.classList.add('active');
             showCharts.classList.remove('active');
 

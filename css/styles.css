@@ -3,15 +3,14 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #ddede6;
     /* Blanc pour le thème irlandais */
-    color: #2c3e50;
+    color: #065F46;
 }
 
 /* Barre de navigation */
 .navbar {
-    background-color: #006400;
-    /* Vert foncé */
+    background-color: #065F46;
     padding: 1em 0;
     display: flex;
     justify-content: center;
@@ -30,6 +29,7 @@ body {
     font-size: 1.2em;
     padding: 0.5em 1em;
     transition: background 0.3s, color 0.3s;
+    border-radius: 5px;
 }
 
 .nav-link.active {
@@ -40,7 +40,7 @@ body {
 }
 
 .nav-link:hover {
-    background-color: #32cd32;
+    background-color: #ffa500;
     /* Vert lime pour hover */
     color: #ffffff;
     border-radius: 5px;
@@ -53,6 +53,7 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     margin: 2em auto;
+    margin-bottom: 20px;
     max-width: 900px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -73,10 +74,12 @@ h2 {
 .label-inline {
     display: inline-block;
     width: 200px;
+    height: 20px;
     text-align: right;
     margin-right: 10px;
     font-weight: bold;
     color: #2c3e50;
+    margin-bottom: 15px;
 }
 
 input[type="text"],
@@ -87,6 +90,22 @@ select {
     border-radius: 5px;
     width: calc(100% - 220px);
     max-width: 400px;
+}
+
+input {
+    padding: 0.5em;
+    border: 2px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 1em;
+    width: 100%; /* Largeur complète */
+    max-width: 400px; /* Limite maximale */
+    box-sizing: border-box; /* Inclut padding dans la largeur totale */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Animation pour le focus */
+}
+
+input:focus {
+    outline: none;
+    border-color: #006400;
 }
 
 button {
@@ -102,7 +121,7 @@ button {
 }
 
 button:hover {
-    background-color: #32cd32;
+    background-color: #df9306;
     /* Vert lime */
 }
 
@@ -111,7 +130,7 @@ table {
     border-collapse: collapse;
     margin-top: 10px;
     width: 100%;
-    max-width: 800px;
+    max-width: 100%;
 }
 
 th,
@@ -155,10 +174,17 @@ tr:hover {
 
 /* Carte */
 #map {
-    width: 90%;
     height: 600px;
     margin-top: 20px;
     border: 1px solid #aaa;
+}
+
+.search-form {
+    width: 600px;
+}
+
+#searchBtn{
+    width: calc(100% - 220px);
 }
 
 /* Couleurs des graphiques */
